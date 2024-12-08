@@ -1,0 +1,17 @@
+h1{
+  border-bottom: 3px solid #f7770f;
+  font-size: 50px;
+}
+b{
+  color: #f7770f;
+}
+
+.form-container{
+  max-width: 72%;
+}
+
+.botonIngresar{
+  border-radius: 30px;
+  width: 40%;
+}
+

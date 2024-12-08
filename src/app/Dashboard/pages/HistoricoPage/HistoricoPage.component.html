@@ -1,0 +1,42 @@
+@if (loading) {
+  <app-spinner></app-spinner>
+ }
+
+
+<app-layout></app-layout>
+<div class="container container-lg">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <mat-card style="margin-top: 2vh;">
+        @if(Graphic){
+          <mat-card-content><app-GraphicMessages></app-GraphicMessages></mat-card-content>
+        }@else {
+          <mat-card-content><app-tablaRegistros></app-tablaRegistros></mat-card-content>
+        }
+      </mat-card>
+    </div>
+  </div>
+ <!-- Botón que activa el DatePicker -->
+
+ @if (Graphic) {
+  <button  class="boton-form-subir" mat-mini-fab color="accent" (click)="CambiarGrafica()">
+    <mat-icon>swap_vert</mat-icon>
+  </button>
+ }@else {
+   <button  class="boton-form-subir" mat-mini-fab color="accent" (click)="picker.open()">
+     <mat-icon>swap_vert</mat-icon>
+    </button>
+  }
+
+
+<!-- Picker oculto con inputs ocultos, pero usando un overlay para que aparezca cerca del botón -->
+<mat-form-field style="display: none;">
+  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Fecha de inicio">
+    <input matEndDate formControlName="end" (dateChange)="onDateSelected($event)" placeholder="Fecha de fin">
+  </mat-date-range-input>
+</mat-form-field>
+
+<!-- Datepicker que aparece cerca del botón -->
+<mat-date-range-picker #picker></mat-date-range-picker>
+</div>

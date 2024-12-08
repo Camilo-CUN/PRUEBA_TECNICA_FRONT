@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.display-1 {
+  font-weight: bold;
+  text-align: center;
+  /* font-size: 10vw; */
+  background-color: #84bd00;
+  color: white;
+  animation: changeColor 4s ease-in infinite;
+}
+
+em {
+  font-family: -webkit-pictograph;
+  font-weight: lighter;
+}
+
+@keyframes changeColor {
+  0% { background-color:#1f2936; }
+  50% { background-color:  #84bd00; }
+  100% { background-color:#1f2936; }
+}
+
+
+@keyframes changeColorBorder {
+  0%, 100% { border-color:#1f2936 }
+  50% { border-color:  #84bd00 }
+}

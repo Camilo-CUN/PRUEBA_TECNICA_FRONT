@@ -1,0 +1,60 @@
+<div class="form-container">
+  <div class="form-content text-center">
+      <h1 class="title-login">Zeus<b>Clothes</b></h1>
+
+      <form [formGroup]="formLogin" class="text-left">
+          <div class="form W-100">
+              <div class="mt-4">
+                    <mat-form-field appearance="outline" class="w-100 mb-3">
+                      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                      <mat-label>Ingresa tu Usuario</mat-label>
+                      <input matInput formControlName="username" placeholder="Usuario">
+                      @if (isInvalidField('username')) {
+                        <mat-error>
+                          {{ getFieldError("username") }}
+                        </mat-error>
+                      }
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 mb-2">
+                        <mat-label>Ingresa tu contraseña</mat-label>
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        @if (isInvalidField('password')) {
+                          <mat-error>
+                            {{ getFieldError("password") }}
+                          </mat-error>
+                        }
+                      </mat-form-field>
+                  <div class="row mb-4" style="display: none;">
+                    <div class="col-md-6 col-6">
+                      <mat-checkbox class="example-margin">Recordar Usuario!</mat-checkbox>
+                    </div>
+                    <div class="col-md-6 col-6 d-flex justify-content-center align-items-center">
+                      <a href="#" class="forgot-password">¿Olvidé mi contraseña?</a>
+                    </div>
+                  </div>
+                  <div>
+                    <span routerLink="/DashBoard" routerLinkActive="router-link-active" ><button mat-flat-button color="primary" (click)="ConsultarUsuario()"  class="botonIngresar mb-4">Ingresar</button></span>
+                  </div>
+              </div>
+
+              <mat-divider></mat-divider>
+              <div
+                  class="d-flex justify-content-center field-wrapper"
+              >
+              </div>
+          </div>
+      </form>
+      <p class="terms-conditions mt-4">
+          © {{ 2024 }} Todos los derechos reservados.
+
+          <a
+              href="https://cun.edu.co/terminosycondiciones"
+              target="_blank"
+              >Términos y condiciones.</a
+          >
+      </p>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+mat-card{
+  border-radius: 0%;
+  border: none;
+  box-shadow: none;
+}
+
+.boton-form-subir{
+  right: 4%;
+  bottom: 4%;
+  position: fixed;
+  color: white !important;
+  z-index: 1001;
+}
+
+.mat-calendar {
+  position: absolute !important;
+}
+
+::ng-deep .mat-datepicker-content{
+  right: 5% !important;
+  bottom: 5% !important;
+  position: fixed;
+}

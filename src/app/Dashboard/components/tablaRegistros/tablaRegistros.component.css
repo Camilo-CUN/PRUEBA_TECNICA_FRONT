@@ -1,0 +1,57 @@
+.example-button-row button {
+  margin-right: 1vw;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+::ng-deep .mat-mdc-table {
+  border-radius: 10px;
+  overflow: hidden; /* Asegura que el contenido respete el border-radius */
+}
+
+mat-paginator{
+  border-radius: 10px;
+}
+
+::ng-deep button {
+  border-radius: 2vh !important;
+}
+
+
+table{
+  min-height: 52vh;
+}
+
+.container{
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
+
+.Tablecontainer{
+  max-height: 52vh;
+  overflow: auto;
+}
+
+.FindInput{
+  box-shadow: 1px 0px 5px -2px rgba(0,0,0,0.75);
+  margin-right: 2vw;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: center !important;
+}
+
+::ng-deep .mat-cell{
+  text-align: center !important;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+}

@@ -1,0 +1,80 @@
+@if (table) {
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-8 d-flex align-items-center">
+      <mat-form-field class="FindInput" appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar aqui" #input placeholder="Ejemplo">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <div class="example-button-row">
+        <button mat-fab extended color="primary" class="mat-elevation-z8" (click)="exportExcel()">
+          <mat-icon>description</mat-icon>
+          EXCEL
+        </button>
+        <button mat-fab extended color="accent" class="mat-elevation-z8" (click)="exportCSV()">
+          <mat-icon>text_snippet</mat-icon>
+          CSV
+        </button>
+        <button mat-fab extended color="warn" class="mat-elevation-z8" (click)="exportPDF()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          PDF
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex align-items-center justify-content-end">
+      <button mat-fab extended color="primary" (click)="cargarMasDatos()">Cargar más información <mat-icon >arrow_forward_ios</mat-icon></button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="mat-elevation-z8 Tablecontainer">
+  <table mat-table [dataSource]="dataSource" class="table table-striped" matSort id="tablaRegistrosMensajes">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="fechaEntrada">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fechaEntrada"> FECHA ENTRADA</th>
+      <td mat-cell *matCellDef="let row"> {{row.fechaEntrada}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="campaña">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by campaña"> CAMPAÑA </th>
+      <td mat-cell *matCellDef="let row"> {{row['campaña']}} </td>
+    </ng-container>
+
+    <!-- Fruit Column -->
+    <ng-container matColumnDef="numero">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by numero"> NÚMERO </th>
+      <td mat-cell *matCellDef="let row"> {{row.numero}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mensaje">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by mensaje"> MENSAJE </th>
+      <td mat-cell *matCellDef="let row"> {{row.mensaje}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+</div>
+<mat-paginator [pageSizeOptions]="[50, 100, 200, 500, 1000]" class="mat-elevation-z8" style="margin-top: 1vh !important;" aria-label="Selecciona la cantidad de mensajes">
+</mat-paginator>
+
+}
+

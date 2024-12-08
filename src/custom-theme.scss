@@ -1,0 +1,70 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+
+$md-cunPalette: (
+    50 : #f0f7e0,
+    100 : #daebb3,
+    200 : #c2de80,
+    300 : #a9d14d,
+    400 : #96c726,
+    500 : #f7770f,
+    600 : #7cb700,
+    700 : #71ae00,
+    800 : #67a600,
+    900 : #549800,
+    A100 : #1f2936,
+    A200 : #c6ff90,
+    A400 : #acff5d,
+    A700 : #9fff44,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$DashboardApiMessages-primary: mat.define-palette($md-cunPalette, 500);
+$DashboardApiMessages-accent: mat.define-palette($md-cunPalette, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$DashboardApiMessages-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$DashboardApiMessages-theme: mat.define-light-theme((
+  color: (
+    primary: $DashboardApiMessages-primary,
+    accent: $DashboardApiMessages-accent,
+    warn: $DashboardApiMessages-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($DashboardApiMessages-theme);
+
