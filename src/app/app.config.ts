@@ -1,16 +1,26 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { authGuard } from './Auth/guards/auth.guard';
+import { authLoggedGuard } from './Auth/guards/auth-logged.guard';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-
-import {authInterceptor} from './Dashboard/interceptors/auth.interceptor'
-
+import { authInterceptor } from './Auth/services/auth.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withHashLocation()),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideRouter(routes),
+    provideHttpClient(
+      withInterceptors([authInterceptor])
+    ),
+    {
+      provide: 'authGuard',
+      useValue: authGuard
+    },
+    {
+      provide: 'authLoggedGuard',
+      useValue: authLoggedGuard
+    },
     provideAnimationsAsync(),
-      ]
+  ]
 };

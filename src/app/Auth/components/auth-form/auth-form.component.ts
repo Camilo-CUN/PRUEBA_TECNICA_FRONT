@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { SharedService } from '../../../shared/services/shared.service';
+import { SharedService } from '../../../Shared/services/shared.service';
 @Component({
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
@@ -27,7 +27,7 @@ export class AuthFormComponent implements OnInit {
   private sharedService = inject(SharedService);
 
   public formLogin: FormGroup =  this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(8)]],
+    email: ['', [Validators.required, Validators.minLength(8)]],
     password: ['', [Validators.required, Validators.minLength(8)]]
   });
 

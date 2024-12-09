@@ -2,8 +2,15 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
 {
-  path: 'dashboard',
-  loadComponent: () => import('./Dashboard/pages/HistoricoPage/HistoricoPage.component'),
+  path: 'admin',
+  loadComponent: () => import('./Admin/pages/admin-users-page/admin-users-page.component'),
+  canActivate: ['authGuard'],
+  children:[]
+},
+{
+  path: 'products',
+  loadComponent: () => import('./products/pages/products-page/products-page.component'),
+  canActivate: ['authGuard'],
   children:[]
 },
 {

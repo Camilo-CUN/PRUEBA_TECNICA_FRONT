@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{data.name}}</h2>
+<mat-dialog-content>
+  <form>
+    <div class="row">
+      <div class="col-md-6 d-flex justify-content-center flex-column">
+        <mat-form-field appearance="outline" class="full-width mb-4 mt-2">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="data.name" name="name">
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="data.email" name="email">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center flex-column">
+        <mat-form-field appearance="outline" class="full-width mb-4 mt-2">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [(ngModel)]="data.password" name="password" type="password">
+        </mat-form-field>
+
+        <!-- Rol -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Rol</mat-label>
+          <input matInput [(ngModel)]="data.rol" name="rol">
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- Nombre -->
+
+    <!-- Password -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="w-100 d-flex justify-content-between">
+  <button mat-button (click)="onClose()">Cerrar</button>
+  <button mat-raised-button color="primary" (click)="onEdit()">Guardar</button>
+</mat-dialog-actions>

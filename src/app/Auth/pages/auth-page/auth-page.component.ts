@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthFormComponent } from '../../components/auth-form/auth-form.component';
 import { SpinnerComponent } from '../../../Shared/components/spinner/spinner.component';
-import { SharedService } from '../../../shared/services/shared.service';
+import { SharedService } from '../../../Shared/services/shared.service';
 
 @Component({
   selector: 'app-auth-page',

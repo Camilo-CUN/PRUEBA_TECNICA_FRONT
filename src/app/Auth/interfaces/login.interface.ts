@@ -1,20 +1,14 @@
 
 export interface Login {
-  username: string;
+  email: string;
   password: string;
 }
 export interface User {
-  user:   string;
-  rol:    string;
-  estado: string;
   token:  string;
 }
 
 
 export interface LoginResponse {
-  user:   string;
-  rol:    string;
-  estado: string;
   token:  string;
 }
 

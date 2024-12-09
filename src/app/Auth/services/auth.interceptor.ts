@@ -6,31 +6,24 @@ import { User, LoginOrganigramaRes } from '../interfaces/login.interface';
 
 const env = environment;
 
-export const  authInterceptor: HttpInterceptorFn = (req, next) => {
-  if(env.apiUrl && (req.url.includes('peoplecore') || req.url.includes('GestionUsuarios')) && !req.url.includes('login')){
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  console.log('Interceptor activado:', req.url);
+  if (env.apiUrl && (req.url.includes('Product') || req.url.includes('User')) && !req.url.includes('login')) {
+    console.log('Intercepting URL:', req.url);
     return GetSessionToken().pipe(
-      switchMap((token) => { const authReq = req.clone({
-        headers: req.headers
-          .set('Authorization', `Bearer ${token}`)  // Token obtenido de sessionStorage
-          .set('Content-Type', 'application/json'),
-        });
-        return next(authReq)
-      })
-    )
-    //logica para interceptar peticiones de Organigrama
-  }else if(env.apiUrl && req.url.includes('Organigrama') && !req.url.includes('Auth')){
-    return GetOrganigramaToken().pipe(
       switchMap((token) => {
         const authReq = req.clone({
           headers: req.headers
-            .set('Authorization', "bearer " + token)
+            .set('Authorization', `Bearer ${token}`) // Token obtenido de sessionStorage
             .set('Content-Type', 'application/json'),
         });
         return next(authReq);
-      }));
-    }
-    return next(req);
-}
+      })
+    );
+  }
+  return next(req);
+};
+
 
 const GetSessionToken = (): Observable<string> =>{
   const userString = sessionStorage.getItem('user');
@@ -48,18 +41,6 @@ const GetSessionToken = (): Observable<string> =>{
       observer.error('No se encontró el token')
     }
   })
-}
-
-const GetOrganigramaToken = (): Observable<string> => {
-  const http = inject(HttpClient);
-  const credentials = {
-    // username: env.apiOrgUser,
-    // password: env.apiOrgPassword
-  };
-  return http.post<LoginOrganigramaRes>(`${env.apiUrl}/Organigrama/Auth`, credentials)
-    .pipe(
-      map((res: LoginOrganigramaRes) => res.token)
-    );
 }
 
 

@@ -14,12 +14,9 @@ private env = environment;
 constructor() { }
 
   GetUserData(Login: Login){
-    return this.http.post<LoginResponse>(`${this.env.apiUrl}/GestionUsuarios/login`, Login).pipe(
+    return this.http.post<LoginResponse>(`${this.env.apiUrl}/Auth/login`, Login).pipe(
       tap((res) =>{
         const user: User = {
-          user: res.user,
-          rol: res.rol,
-          estado: res.estado,
           token: res.token
         };
         sessionStorage.setItem('user', JSON.stringify(user));

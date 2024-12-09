@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { tap } from 'rxjs';
+import { tap, map } from 'rxjs';
 
 //Guard para proteger las rutas
 export const authGuard: CanActivateFn = (route, state) => {
@@ -9,8 +9,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return auth.authUserLogged().pipe(
-    tap((validarToken) => {
-      if (!validarToken) router.navigate(['/login']);
+    map((validarToken) => {
+      if (!validarToken) {
+        router.navigate(['/login']);
+        return false;
+      }
+      return true;
     })
   );
 };

@@ -8,10 +8,10 @@
                     <mat-form-field appearance="outline" class="w-100 mb-3">
                       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                       <mat-label>Ingresa tu Usuario</mat-label>
-                      <input matInput formControlName="username" placeholder="Usuario">
-                      @if (isInvalidField('username')) {
+                      <input matInput formControlName="email" placeholder="Usuario">
+                      @if (isInvalidField('email')) {
                         <mat-error>
-                          {{ getFieldError("username") }}
+                          {{ getFieldError("email") }}
                         </mat-error>
                       }
                     </mat-form-field>
