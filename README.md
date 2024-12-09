@@ -1,4 +1,4 @@
-# Portal Gestion ARL
+# PRUEBA TECNICA
 
 Instrucciones para desplegar un proyecto de `Angular`
 
